@@ -49,7 +49,7 @@ module Echidna
       def load_dict(filename)
         File.open(filename, 'r') do |file|
           file.each_line do |line|
-            Stopword.add(line.strip)
+            add(line.strip)
           end
         end
       end
