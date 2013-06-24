@@ -5,10 +5,11 @@ module Echidna
     CHINESE_DICT_PATH = File.join(File.dirname(__FILE__), '../../dicts/chinese_stopwords.txt')
     ENGLISH_DICT_PATH = File.join(File.dirname(__FILE__), '../../dicts/english_stopwords.txt')
 
-    class <<self
+    class << self
       def load
         load_dict(CHINESE_DICT_PATH)
         load_dict(ENGLISH_DICT_PATH)
+        $redis.scard(key)
       end
 
       def reject(words)
